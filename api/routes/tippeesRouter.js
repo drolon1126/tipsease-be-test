@@ -2,9 +2,11 @@
 
 const express = require('express');
 const { authenticate } = require('../../api/middleware/auth');
+var bodyParser = require('body-parser');
 const router = express.Router();
 const imageParser = require('../../config/cloudinary');
 const db = require('../../helpers/dbTippeesHelpers');
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 /////============ ROUTES ============/////////
 
 router.get('/', (req, res) => {
@@ -23,9 +25,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', urlencodedParser, (req, res) => {
   const { id } = req.params.id;
-  const data = req.params;
+  const data = req.body;
 
   db.updateTippee(id, data)
     .then(data => {
