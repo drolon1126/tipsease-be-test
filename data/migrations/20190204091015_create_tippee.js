@@ -19,7 +19,6 @@ exports.up = function(knex, Promise) {
     tbl.date('start_date');
 
     tbl.string('email').notNullable();
-    tbl.string('role');
     tbl.text('tagline'); //optional
     tbl.string('password').notNullable();
     tbl.string('qr_url'); //optional

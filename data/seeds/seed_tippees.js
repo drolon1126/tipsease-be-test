@@ -8,8 +8,7 @@ const createFakeTippee = i => ({
   photo_url_id: i,
   start_date: faker.date.past(),
   email: faker.internet.email(),
-  role: posRole[Math.floor(Math.random()*posRole.length)],
-  tagline: 'Money is good. Good is good. Give me money.',
+  tagline: posRole[Math.floor(Math.random()*posRole.length)],
   password: 'randomHash'
 });
 
