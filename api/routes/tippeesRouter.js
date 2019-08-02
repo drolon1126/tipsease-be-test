@@ -25,7 +25,32 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.put('/:id', urlencodedParser, (req, res) => {
+router.post('/:id', (req, res) => {
+  const { id } = req.params.id;
+  const data = req.body;
+
+  db.insertTippeeData(data)
+    .then(data => {
+      if (data === 0) {
+        //if nothing gets returned
+        res.status(404).json({ errorMsg: 'Sorry, that user does not exist!' });
+      }
+      {
+        db.getByTippeeId(id).then(tippee => {
+          res.status(200).json(tippee);
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        err,
+        message:
+          'Not sure, but are you sure you put in a unique email? Try that first!'
+      });
+    });
+});
+
+router.put('/:id', (req, res) => {
   const { id } = req.params.id;
   const data = req.body;
 
