@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { id } = req.params.id;
-  const data = req.body;
+  const data = req.params;
 
   db.updateTippee(id, data)
     .then(data => {
