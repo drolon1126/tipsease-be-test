@@ -8,6 +8,7 @@ const getTippees = () => {
       'last_name',
       'email',
       'photo_url',
+      'role',
       'tagline',
       'start_date'
     )
@@ -23,6 +24,7 @@ const getByTippeeId = id => {
       'tippees.last_name',
       'tippees.email',
       'tippees.photo_url',
+      'tippees.role',
       'tippees.tagline',
       'tippees.start_date'
     );
