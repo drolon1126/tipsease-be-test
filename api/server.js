@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const bodyParser = require('body-parser')
 const server = express();
 
 ////============ MIDDLEWARE ============/////////
@@ -12,6 +13,12 @@ server.use(express.json());
 server.use(cors());
 server.use(helmet());
 server.use(morgan('short'));
+
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+server.use(bodyParser.json())
 
 ////============ ROUTES ============/////////
 
